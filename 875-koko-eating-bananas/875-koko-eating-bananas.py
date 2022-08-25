@@ -1,9 +1,9 @@
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        left = 1
-        right = max(piles)
+        left, right = 1, max(piles)
+        res = right
         
-        while left < right:
+        while left <= right:
             middle = (left + right) // 2
             hours_spent = 0
             
@@ -11,7 +11,8 @@ class Solution:
                 hours_spent += math.ceil(pile / middle)
                 
             if hours_spent <= h:
-                right = middle
+                res = min(res, middle)
+                right = middle - 1
             else:
                 left = middle + 1
-        return right
+        return res
