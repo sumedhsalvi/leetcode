@@ -16,13 +16,26 @@ class Solution:
 #         return prev
         
     # recursive
+#         if not head:
+#             return None
+        
+#         newHead = head
+#         if head.next:
+#             newHead = self.reverseList(head.next)
+#             head.next.next = head
+#         head.next = None
+        
+#         return newHead
+    
+    # recursive type 2
         if not head:
             return None
         
-        newHead = head
-        if head.next:
-            newHead = self.reverseList(head.next)
-            head.next.next = head
+        if head.next == None:
+            return head
+        
+        newHead = self.reverseList(head.next)
+        head.next.next = head
         head.next = None
         
-        return newHead
+        return newHead    
